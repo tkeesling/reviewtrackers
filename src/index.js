@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import Reviews from './screens/Reviews';
 import metropolis from './static/Metropolis-Regular.woff';
 
 const theme = {
@@ -55,7 +56,7 @@ function App() {
       <GlobalStyle />
       <StyledApp>
         <Inner>
-          <p>Hello World</p>
+          <Reviews />
         </Inner>
       </StyledApp>
     </ThemeProvider>
