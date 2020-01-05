@@ -16,14 +16,14 @@ function StarRow({ rating }) {
   return (
     <div>
       {[...Array(rating)].map(() => (
-        <StarIcon />
+        <StarIcon key={Math.random()} />
       ))}
     </div>
   );
 }
 
 StarRow.propTypes = {
-  rating: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
 };
 
 export default StarRow;

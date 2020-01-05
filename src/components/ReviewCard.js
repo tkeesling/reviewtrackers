@@ -1,48 +1,56 @@
+import { navigate } from '@reach/router';
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import formatDateTime from '../global/formatDateTime';
 import StarRow from './StarRow';
+import Author from './styles/Author';
+import StyledDate from './styles/StyledDate';
 
 const StyledReviewCard = styled.div`
   border: 1px solid ${props => props.theme.offWhite};
   box-shadow: ${props => props.theme.boxShadow};
   position: relative;
-  padding: 1rem 1rem;
+  padding: 1.5rem 1.5rem;
   display: flex;
   line-height: 1.5rem;
   flex-direction: column;
+  max-width: 1000px;
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    box-shadow: ${props => props.theme.darkBoxShadow};
+  }
   .author-date {
-    margin-top: 3rem;
-    display: grid;
+    margin-top: 2rem;
+    display: flex;
     width: 100%;
-    grid-template-columns: repeat(2, minmax(200px, 1fr));
   }
 `;
 
 const Title = styled.h3`
-  margin: 1rem 0;
-  /* transform: skew(-2deg) rotate(-1deg); */
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 2.2rem;
   font-family: 'metropolis-bold';
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
-  font-size: 2rem;
 `;
 
-const Author = styled.span``;
+function ReviewCard(props) {
+  const { id, author, place, published_at: publishedAt, rating } = props.review;
 
-const Date = styled.span`
-  color: ${props => props.theme.grey};
-`;
+  function handleClick() {
+    navigate(id);
+  }
 
-function ReviewCard({ review }) {
-  const { id, author, place, published_at: publishedAt, rating } = review;
   return (
-    <StyledReviewCard>
+    <StyledReviewCard onClick={handleClick}>
       <Title>{place}</Title>
       <StarRow rating={rating} />
+      {props.children}
       <div className="author-date">
         <Author>{author}</Author>
-        <Date>{formatDateTime(publishedAt)}</Date>
+        <StyledDate>{formatDateTime(publishedAt)}</StyledDate>
       </div>
     </StyledReviewCard>
   );

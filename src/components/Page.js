@@ -12,6 +12,7 @@ const theme = {
   offWhite: '#EDEDED',
   maxWidth: '1200px',
   boxShadow: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
+  darkBoxShadow: '0 12px 24px 0 rgba(0, 0, 0, 0.2)',
 };
 
 const StyledPage = styled.div`

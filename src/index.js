@@ -2,6 +2,7 @@ import { Router } from '@reach/router';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Page from './components/Page';
+import ReviewDetailsPage from './pages/ReviewDetailsPage';
 import ReviewsPage from './pages/ReviewsPage';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <Page>
       <Router>
         <ReviewsPage path="/" />
+        <ReviewDetailsPage path="/:id" />
       </Router>
     </Page>
   );

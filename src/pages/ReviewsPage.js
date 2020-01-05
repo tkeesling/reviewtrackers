@@ -15,7 +15,9 @@ function ReviewsPage() {
   return (
     <ReviewList>
       {reviewData.map(review => (
+        // <Link key={review.id} to={review.id}>
         <ReviewCard key={review.id} review={review} />
+        // </Link>
       ))}
     </ReviewList>
   );
