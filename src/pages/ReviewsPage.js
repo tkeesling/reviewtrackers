@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import reviews from '../assets/reviews-data.json';
-import ReviewCard from './ReviewCard.js';
+import reviewData from '../assets/resources/reviews-data';
+import ReviewCard from '../components/ReviewCard';
 
 const ReviewList = styled.div`
   display: grid;
@@ -11,14 +11,14 @@ const ReviewList = styled.div`
   margin: 0 auto;
 `;
 
-function Reviews() {
+function ReviewsPage() {
   return (
     <ReviewList>
-      {reviews.map(review => (
+      {reviewData.map(review => (
         <ReviewCard key={review.id} review={review} />
       ))}
     </ReviewList>
   );
 }
 
-export default Reviews;
+export default ReviewsPage;

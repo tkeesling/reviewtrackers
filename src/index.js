@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
-import Reviews from './screens/Reviews';
+import ReviewsPage from './pages/ReviewsPage';
 import metropolisBold from './static/Metropolis-Bold.woff';
 import metropolis from './static/Metropolis-Regular.woff';
 
@@ -64,7 +64,7 @@ function App() {
       <GlobalStyle />
       <StyledApp>
         <Inner>
-          <Reviews />
+          <ReviewsPage />
         </Inner>
       </StyledApp>
     </ThemeProvider>

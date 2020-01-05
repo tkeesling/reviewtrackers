@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import formatDateTime from '../lib/formatDateTime';
+import formatDateTime from '../global/formatDateTime';
 import StarRow from './StarRow';
 
 const StyledReviewCard = styled.div`

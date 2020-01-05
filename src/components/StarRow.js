@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import starIcon from '../assets/star-icon.svg';
+import starIcon from '../assets/icons/star-icon.svg';
 
 const StarIcon = styled.svg`
   width: 2rem;
