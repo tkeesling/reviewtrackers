@@ -1,14 +1,16 @@
 import React from 'react';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
-import metropolisBold from '../static/Metropolis-Bold.woff';
-import metropolis from '../static/Metropolis-Regular.woff';
+import metropolisBold from '../assets/fonts/Metropolis-Bold.woff';
+import metropolis from '../assets/fonts/Metropolis-Regular.woff';
+import Header from './Header';
 
 const theme = {
   black: '#393939',
   grey: '#9D9D9D',
   lightGrey: '#E1E1E1',
+  red: 'red',
   offWhite: '#EDEDED',
-  maxWidth: '1000px',
+  maxWidth: '1200px',
   boxShadow: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
 };
 
@@ -61,6 +63,7 @@ function Page(props) {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <StyledPage>
+        <Header />
         <Inner>{props.children}</Inner>
       </StyledPage>
     </ThemeProvider>
