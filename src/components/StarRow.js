@@ -23,7 +23,7 @@ function StarRow({ rating }) {
 }
 
 StarRow.propTypes = {
-  rating: PropTypes.number.isRequired,
+  rating: PropTypes.number,
 };
 
 export default StarRow;

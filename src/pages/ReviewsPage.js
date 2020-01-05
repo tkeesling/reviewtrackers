@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import reviewData from '../assets/resources/reviews-data';
+import reviewData from '../assets/resources/reviews-data.json';
 import ReviewCard from '../components/ReviewCard';
 
 const ReviewList = styled.div`
@@ -12,12 +12,17 @@ const ReviewList = styled.div`
 `;
 
 function ReviewsPage() {
+  const [reviews, setReviews] = React.useState([]);
+
+  React.useEffect(() => {
+    // simulate a fetch, not sure if I'll have the time to implement some fetcher component
+    setReviews(reviewData);
+  }, [reviews]);
+
   return (
     <ReviewList>
-      {reviewData.map(review => (
-        // <Link key={review.id} to={review.id}>
-        <ReviewCard key={review.id} review={review} />
-        // </Link>
+      {reviews.map(review => (
+        <ReviewCard isClickable key={review.id} review={review} />
       ))}
     </ReviewList>
   );

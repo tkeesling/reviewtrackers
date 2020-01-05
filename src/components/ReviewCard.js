@@ -1,7 +1,7 @@
 import { navigate } from '@reach/router';
 import PropTypes from 'prop-types';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import formatDateTime from '../global/formatDateTime';
 import StarRow from './StarRow';
 import Author from './styles/Author';
@@ -16,11 +16,15 @@ const StyledReviewCard = styled.div`
   line-height: 1.5rem;
   flex-direction: column;
   max-width: 1000px;
-  &:hover,
-  &:focus {
-    cursor: pointer;
-    box-shadow: ${props => props.theme.darkBoxShadow};
-  }
+  ${props =>
+    props.isClickable &&
+    css`
+      &:hover,
+      &:focus {
+        cursor: pointer;
+        box-shadow: ${props => props.theme.darkBoxShadow};
+      }
+    `}
   .author-date {
     margin-top: 2rem;
     display: flex;
@@ -37,6 +41,7 @@ const Title = styled.h3`
 `;
 
 function ReviewCard(props) {
+  const isClickable = props.isClickable;
   const { id, author, place, published_at: publishedAt, rating } = props.review;
 
   function handleClick() {
@@ -44,7 +49,7 @@ function ReviewCard(props) {
   }
 
   return (
-    <StyledReviewCard onClick={handleClick}>
+    <StyledReviewCard isClickable={isClickable} onClick={handleClick}>
       <Title>{place}</Title>
       <StarRow rating={rating} />
       {props.children}
@@ -63,7 +68,7 @@ ReviewCard.propTypes = {
       author: PropTypes.string.isRequired,
       place: PropTypes.string.isRequired,
       published_at: PropTypes.string.isRequired,
-      rating: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
     })
   ),
 };
