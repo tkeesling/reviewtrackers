@@ -2,14 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Reviews from './screens/Reviews';
+import metropolisBold from './static/Metropolis-Bold.woff';
 import metropolis from './static/Metropolis-Regular.woff';
 
 const theme = {
   black: '#393939',
-  grey: '#3A3A3A',
+  grey: '#9D9D9D',
   lightGrey: '#E1E1E1',
   offWhite: '#EDEDED',
   maxWidth: '1000px',
+  boxShadow: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
 };
 
 const StyledApp = styled.div`
@@ -30,6 +32,12 @@ const GlobalStyle = createGlobalStyle`
     font-weight: normal;
     font-style: normal;
   }
+  @font-face {
+    font-family: 'metropolis-bold';
+    src: url(${metropolisBold});
+    font-weight: normal;
+    font-style: normal;
+  }
   html {
     box-sizing: border-box;
     font-size: 10px;
@@ -42,7 +50,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-size: 1.5rem;
     line-height: 2;
-    font-family: metropolis, 'serif';
+    font-family: metropolis, serif;
   }
   a {
     text-decoration: none;
