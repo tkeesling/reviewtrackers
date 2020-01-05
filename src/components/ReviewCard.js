@@ -4,8 +4,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import formatDateTime from '../global/formatDateTime';
 import StarRow from './StarRow';
-import Author from './styles/Author';
-import StyledDate from './styles/StyledDate';
+import { StyledAuthor, StyledDate } from './styles/StyledCard';
 
 const StyledReviewCard = styled.div`
   border: 1px solid ${props => props.theme.offWhite};
@@ -54,7 +53,7 @@ function ReviewCard(props) {
       <StarRow rating={rating} />
       {props.children}
       <div className="author-date">
-        <Author>{author}</Author>
+        <StyledAuthor>{author}</StyledAuthor>
         <StyledDate>{formatDateTime(publishedAt)}</StyledDate>
       </div>
     </StyledReviewCard>

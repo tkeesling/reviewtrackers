@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import reviewData from '../assets/resources/reviews-data.json';
 import ReviewCard from './ReviewCard';
+
 const StyledContent = styled.p``;
 
 function ReviewDetails({ id }) {
-  const [review, setReview] = React.useState({});
-  React.useEffect(() => {
+  const [review, setReview] = useState({});
+
+  useEffect(() => {
     const theReview = reviewData.find(review => id === review.id);
     setReview(theReview);
   }, [id]);
