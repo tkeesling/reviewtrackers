@@ -64,7 +64,6 @@
     "react/no-unescaped-entities": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "jsx-a11y/accessible-emoji": 0,
     "react/require-default-props": 0,
     "react/jsx-filename-extension": [
       1,
@@ -96,13 +95,5 @@
         "printWidth": 80
       }
     ],
-    "jsx-a11y/href-no-hash": "off",
-    "jsx-a11y/anchor-is-valid": [
-      "warn",
-      {
-        "aspects": ["invalidHref"]
-      }
-    ]
-  },
   "plugins": ["prettier"]
 }
