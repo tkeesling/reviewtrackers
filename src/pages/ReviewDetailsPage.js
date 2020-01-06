@@ -7,6 +7,7 @@ import ReviewDetails from '../components/ReviewDetails';
 const Center = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
 `;
 
@@ -52,6 +53,7 @@ function ReviewDetailsPage({ id }) {
   return (
     <Center>
       <ReviewDetails id={id} />
+      <br />
       {showEdit ? (
         <CreateCommentCard id={id} callback={saveComment} initialState={values} />
       ) : (

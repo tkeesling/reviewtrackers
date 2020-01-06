@@ -9,9 +9,13 @@ const StyledCard = styled.div`
   flex-direction: column;
   line-height: 1.5rem;
   max-width: 1000px;
+  width: 100%;
 `;
 
-const StyledContent = styled.p``;
+const StyledContent = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 const StyledAuthor = styled.span`
   margin-right: 30px;
