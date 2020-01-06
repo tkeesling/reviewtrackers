@@ -12,7 +12,7 @@ function App() {
       <Router>
         <NotFound default />
         <ReviewsPage path="/" />
-        <ReviewDetailsPage path="/details/:id" />
+        <ReviewDetailsPage path=":id" />
       </Router>
     </Page>
   );

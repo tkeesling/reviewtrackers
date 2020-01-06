@@ -15,6 +15,7 @@ const StyledReviewCard = styled.div`
   line-height: 1.5rem;
   flex-direction: column;
   max-width: 1000px;
+  width: 100%;
   ${props =>
     props.isClickable &&
     css`
@@ -44,7 +45,7 @@ function ReviewCard(props) {
   const { id, author, place, published_at: publishedAt, rating } = props.review;
 
   function goToDetails() {
-    navigate(`details/${id}`);
+    navigate(`${id}`);
   }
 
   return (
