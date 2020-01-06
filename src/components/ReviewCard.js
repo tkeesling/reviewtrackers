@@ -43,12 +43,12 @@ function ReviewCard(props) {
   const isClickable = props.isClickable;
   const { id, author, place, published_at: publishedAt, rating } = props.review;
 
-  function handleClick() {
-    navigate(id);
+  function goToDetails() {
+    navigate(`details/${id}`);
   }
 
   return (
-    <StyledReviewCard isClickable={isClickable} onClick={handleClick}>
+    <StyledReviewCard isClickable={isClickable} onClick={goToDetails}>
       <Title>{place}</Title>
       <StarRow rating={rating} />
       {props.children}

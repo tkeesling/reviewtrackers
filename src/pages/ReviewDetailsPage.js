@@ -22,8 +22,6 @@ function ReviewDetailsPage({ id }) {
   const [showEdit, setShowEdit] = useState(true);
   const [values, setValues] = useState(INITIAL_STATE);
 
-  // in replace of an http request, we are using local storage to persist comments on unique reviews
-  // and retrieving the comment upon first mount
   useEffect(() => {
     // in replace of an http request, we are using local storage to persist comments on unique reviews
     // and retrieving the comment upon first mount
