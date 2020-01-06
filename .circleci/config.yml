@@ -30,7 +30,7 @@ jobs: # a collection of steps
       - checkout
       - run:
           name: npm install
-          command: npm
+          command: npm install
       - run:
           name: Deploy to S3
           command: npm run aws
