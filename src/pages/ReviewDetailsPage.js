@@ -12,16 +12,20 @@ const Center = styled.div`
 
 // the id is available as a prop via the Router
 function ReviewDetailsPage({ id }) {
-  const [showEdit, setShowEdit] = useState(true);
-  const [values, setValues] = useState({
+  const INITIAL_STATE = {
     id,
-    name: '',
+    author: '',
     comment: '',
     published_at: '',
-  });
+  };
+  const [showEdit, setShowEdit] = useState(true);
+  const [values, setValues] = useState(INITIAL_STATE);
 
   // in replace of an http request, we are using local storage to persist comments on unique reviews
+  // and retrieving the comment upon first mount
   useEffect(() => {
+    // in replace of an http request, we are using local storage to persist comments on unique reviews
+    // and retrieving the comment upon first mount
     const commentString = localStorage.getItem(id);
     if (!!commentString) {
       setValues(JSON.parse(commentString));
@@ -30,9 +34,19 @@ function ReviewDetailsPage({ id }) {
   }, [id]);
 
   function saveComment(values) {
+    // think of the flow here like an POST
     localStorage.setItem(values.id, JSON.stringify(values));
+    // GET the values, and set them
     setValues(values);
     setShowEdit(false);
+  }
+
+  function deleteComment() {
+    // DELETE
+    localStorage.removeItem(values.id);
+    // 200 success?
+    setValues(INITIAL_STATE);
+    setShowEdit(true);
   }
 
   return (
@@ -41,7 +55,7 @@ function ReviewDetailsPage({ id }) {
       {showEdit ? (
         <CreateCommentCard id={id} callback={saveComment} initialState={values} />
       ) : (
-        <CommentCard values={values} />
+        <CommentCard values={values} setShowEdit={setShowEdit} deleteComment={deleteComment} />
       )}
     </Center>
   );

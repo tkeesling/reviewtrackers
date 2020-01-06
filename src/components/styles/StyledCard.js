@@ -11,6 +11,8 @@ const StyledCard = styled.div`
   max-width: 1000px;
 `;
 
+const StyledContent = styled.p``;
+
 const StyledAuthor = styled.span`
   margin-right: 30px;
 `;
@@ -19,4 +21,4 @@ const StyledDate = styled.span`
   color: ${props => props.theme.grey};
 `;
 
-export { StyledCard, StyledAuthor, StyledDate };
+export { StyledCard, StyledContent, StyledAuthor, StyledDate };

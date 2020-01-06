@@ -61,15 +61,13 @@ function ReviewCard(props) {
 }
 
 ReviewCard.propTypes = {
-  review: PropTypes.objectOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      author: PropTypes.string.isRequired,
-      place: PropTypes.string.isRequired,
-      published_at: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired,
-    })
-  ),
+  review: PropTypes.shape({
+    id: PropTypes.string,
+    author: PropTypes.string,
+    place: PropTypes.string,
+    published_at: PropTypes.string,
+    rating: PropTypes.number,
+  }),
 };
 
 export default ReviewCard;

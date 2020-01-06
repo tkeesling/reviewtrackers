@@ -50,7 +50,7 @@ const NavStyles = styled.ul`
   }
 `;
 
-function Nav() {
+function Nav(props) {
   return (
     <NavStyles>
       <Link to="/">Home</Link>

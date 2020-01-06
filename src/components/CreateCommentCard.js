@@ -39,14 +39,14 @@ function CreateCommentCard({ callback, initialState }) {
   return (
     <StyledCard>
       <Form onSubmit={handleSubmit}>
-        <Label htmlFor="name">Your Name:</Label>
+        <Label htmlFor="author">Your Name:</Label>
         <NameInput
-          name="name"
+          name="author"
           onChange={handleChange}
-          value={values.name}
+          value={values.author}
           placeholder="Enter your name..."
         />
-        {errors.name && <ErrorText>{errors.name}</ErrorText>}
+        {errors.author && <ErrorText>{errors.author}</ErrorText>}
         <Label htmlFor="comment">Comments:</Label>
         <TextInput name="comment" onChange={handleChange} value={values.comment} />
         {errors.comment && <ErrorText>{errors.comment}</ErrorText>}

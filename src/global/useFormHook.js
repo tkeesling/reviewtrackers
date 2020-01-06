@@ -28,7 +28,7 @@ function useFormHook(callback, initialState, validate) {
     event.preventDefault();
     const validationErrors = validate(values);
     setErrors(validationErrors);
-    setValues({ ...values, published_at: `${Date.now()}` });
+    setValues({ ...values, published_at: `${new Date(Date.now())}` }); // wouldn't set this client side normally
     setSubmitting(true);
   }
 
