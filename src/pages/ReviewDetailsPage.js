@@ -1,18 +1,16 @@
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import CommentCard from '../components/CommentCard';
-import CreateCommentCard from '../components/CreateCommentCard';
-import ReviewDetails from '../components/ReviewDetails';
+import EditCommentFormCard from '../components/EditCommentFormCard';
+import ReviewDetailsCard from '../components/ReviewDetailsCard';
 
-const Center = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
+const propTypes = {
+  id: PropTypes.string,
+};
 
 // the id is available as a prop via the Router
-function ReviewDetailsPage({ id }) {
+const ReviewDetailsPage = ({ id }) => {
   const INITIAL_STATE = {
     id,
     author: '',
@@ -32,33 +30,42 @@ function ReviewDetailsPage({ id }) {
     }
   }, [id]);
 
-  function saveComment(values) {
+  const saveComment = values => {
     // think of the flow here like an POST
     localStorage.setItem(values.id, JSON.stringify(values));
     // GET the values, and set them
     setValues(values);
     setShowEdit(false);
-  }
+  };
 
-  function deleteComment() {
+  const deleteComment = () => {
     // DELETE
     localStorage.removeItem(values.id);
     // 200 success?
     setValues(INITIAL_STATE);
     setShowEdit(true);
-  }
+  };
 
   return (
     <Center>
-      <ReviewDetails id={id} />
+      <ReviewDetailsCard id={id} />
       <br />
       {showEdit ? (
-        <CreateCommentCard id={id} callback={saveComment} initialState={values} />
+        <EditCommentFormCard onSubmit={saveComment} formState={values} />
       ) : (
         <CommentCard values={values} setShowEdit={setShowEdit} deleteComment={deleteComment} />
       )}
     </Center>
   );
-}
+};
+
+const Center = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+ReviewDetailsPage.propTypes = propTypes;
 
 export default ReviewDetailsPage;

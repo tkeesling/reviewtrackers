@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
-const Form = styled.form`
+const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
 `;
 
-const NameInput = styled.input`
+const FormInput = styled.input`
   font-size: inherit;
   color: inherit;
   width: 300px;
   margin-bottom: 2rem;
 `;
 
-const TextInput = styled.textarea`
+const FormTextarea = styled.textarea`
   font-size: inherit;
   font-family: inherit;
   color: inherit;
@@ -20,15 +20,15 @@ const TextInput = styled.textarea`
   height: 10rem;
 `;
 
-const Label = styled.label`
+const FormLabel = styled.label`
   display: flex;
   font-family: 'metropolis-bold';
 `;
 
-const ErrorText = styled.p`
+const FormErrorText = styled.p`
   margin-top: -1rem;
   margin-bottom: 1rem;
   color: ${props => props.theme.red};
 `;
 
-export { Form, NameInput, TextInput, Label, ErrorText };
+export { StyledForm, FormInput, FormTextarea, FormLabel, FormErrorText };

@@ -2,6 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import Nav from './Nav';
 
+const Header = () => {
+  return (
+    <StyledHeader>
+      <div className="bar">
+        <Logo>Reviews</Logo>
+        <Nav />
+      </div>
+    </StyledHeader>
+  );
+};
+
 const Logo = styled.h1`
   font-size: 4rem;
   margin-left: 2rem;
@@ -26,16 +37,5 @@ const StyledHeader = styled.div`
     }
   }
 `;
-
-function Header() {
-  return (
-    <StyledHeader>
-      <div className="bar">
-        <Logo>Reviews</Logo>
-        <Nav />
-      </div>
-    </StyledHeader>
-  );
-}
 
 export default Header;

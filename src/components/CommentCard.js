@@ -4,7 +4,38 @@ import styled from 'styled-components';
 import { ReactComponent as ReplyIcon } from '../assets/icons/reply.svg';
 import formatDateTime from '../global/formatDateTime';
 import Dropdown from './SimpleDropdown';
-import { StyledAuthor, StyledCard, StyledContent, StyledDate } from './styles/StyledCard';
+import { CardAuthor, CardContent, CardDate, StyledCard } from './styles/StyledCard';
+
+const propTypes = {
+  author: PropTypes.string,
+  comment: PropTypes.string,
+  published_at: PropTypes.string,
+  setShowEdit: PropTypes.func,
+  deleteComment: PropTypes.func,
+};
+
+const CommentCard = (props) => {
+  const {
+    values: { author, comment, published_at },
+    setShowEdit,
+    deleteComment,
+  } = props;
+  return (
+    <StyledCard>
+      <TopRight>
+        <Dropdown setShowEdit={setShowEdit} deleteComment={deleteComment} />
+      </TopRight>
+      <CardContent>
+        <StyledReplyIcon />
+        <p>{comment}</p>
+      </CardContent>
+      <div className="author-date">
+        <CardAuthor>{author}</CardAuthor>
+        <CardDate>{formatDateTime(published_at)}</CardDate>
+      </div>
+    </StyledCard>
+  );
+}
 
 const TopRight = styled.div`
   position: absolute;
@@ -20,35 +51,6 @@ const StyledReplyIcon = styled(ReplyIcon)`
   fill: ${props => props.theme.grey};
 `;
 
-function CommentCard(props) {
-  const {
-    values: { author, comment, published_at },
-    setShowEdit,
-    deleteComment,
-  } = props;
-  return (
-    <StyledCard>
-      <TopRight>
-        <Dropdown setShowEdit={setShowEdit} deleteComment={deleteComment} />
-      </TopRight>
-      <StyledContent>
-        <StyledReplyIcon />
-        <p>{comment}</p>
-      </StyledContent>
-      <div className="author-date">
-        <StyledAuthor>{author}</StyledAuthor>
-        <StyledDate>{formatDateTime(published_at)}</StyledDate>
-      </div>
-    </StyledCard>
-  );
-}
-
-CommentCard.propTypes = {
-  author: PropTypes.string,
-  comment: PropTypes.string,
-  published_at: PropTypes.string,
-  setShowEdit: PropTypes.func,
-  deleteComment: PropTypes.func,
-};
+CommentCard.propTypes = propTypes;
 
 export default CommentCard;

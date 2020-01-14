@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function useFormHook(callback, initialState, validate) {
+const useFormHook = (callback, initialState, validate) => {
   const [values, setValues] = useState(initialState);
   const [errors, setErrors] = React.useState({});
   const [isSubmitting, setSubmitting] = useState(false);
@@ -17,20 +17,20 @@ function useFormHook(callback, initialState, validate) {
     }
   }, [errors]);
 
-  function handleChange(event) {
+  const handleChange = event => {
     setValues({
       ...values,
       [event.target.name]: event.target.value,
     });
-  }
+  };
 
-  function handleSubmit(event) {
+  const handleSubmit = event => {
     event.preventDefault();
     const validationErrors = validate(values);
     setErrors(validationErrors);
     setValues({ ...values, published_at: `${new Date(Date.now())}` }); // wouldn't set this client side normally
     setSubmitting(true);
-  }
+  };
 
   return {
     handleChange,
@@ -38,6 +38,6 @@ function useFormHook(callback, initialState, validate) {
     errors,
     values,
   };
-}
+};
 
 export default useFormHook;
