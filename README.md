@@ -1,5 +1,7 @@
 # ReviewTrackers Code Challenge
 
+[![CircleCI](https://circleci.com/gh/tkeesling/reviewtrackers/tree/master.svg?style=svg)](https://circleci.com/gh/tkeesling/reviewtrackers/tree/master)
+
 Design and implement an application that lists reviews and allows a user to select a review to see more details.
 
 One can find the hosted project [here](http://www.tylerkeesling.com).

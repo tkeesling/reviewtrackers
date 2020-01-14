@@ -1,67 +1,12 @@
 import { navigate } from '@reach/router';
 import PropTypes from 'prop-types';
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import formatDateTime from '../global/formatDateTime';
 import StarRow from './StarRow';
-import { StyledAuthor, StyledDate } from './styles/StyledCard';
+import { CardAuthor, CardDate, CardTitle, StyledCard } from './styles/StyledCard';
 
-const StyledReviewCard = styled.div`
-  border: 1px solid ${props => props.theme.offWhite};
-  box-shadow: ${props => props.theme.boxShadow};
-  position: relative;
-  padding: 1.5rem 1.5rem;
-  display: flex;
-  line-height: 1.5rem;
-  flex-direction: column;
-  max-width: 1000px;
-  width: 100%;
-  ${props =>
-    props.isClickable &&
-    css`
-      &:hover,
-      &:focus {
-        cursor: pointer;
-        box-shadow: ${props => props.theme.darkBoxShadow};
-      }
-    `}
-  .author-date {
-    margin-top: 2rem;
-    display: flex;
-    width: 100%;
-  }
-`;
-
-const Title = styled.h3`
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-size: 2.2rem;
-  font-family: 'metropolis-bold';
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
-`;
-
-function ReviewCard(props) {
-  const isClickable = props.isClickable;
-  const { id, author, place, published_at: publishedAt, rating } = props.review;
-
-  function goToDetails() {
-    navigate(`${id}`);
-  }
-
-  return (
-    <StyledReviewCard isClickable={isClickable} onClick={goToDetails}>
-      <Title>{place}</Title>
-      <StarRow rating={rating} />
-      {props.children}
-      <div className="author-date">
-        <StyledAuthor>{author}</StyledAuthor>
-        <StyledDate>{formatDateTime(publishedAt)}</StyledDate>
-      </div>
-    </StyledReviewCard>
-  );
-}
-
-ReviewCard.propTypes = {
+const propTypes = {
   review: PropTypes.shape({
     id: PropTypes.string,
     author: PropTypes.string,
@@ -70,5 +15,34 @@ ReviewCard.propTypes = {
     rating: PropTypes.number,
   }),
 };
+
+const ReviewCard = props => {
+  const { id, author, place, published_at: publishedAt, rating } = props.review;
+
+  const goToDetails = () => {
+    navigate(`${id}`);
+  };
+
+  return (
+    <StyledReviewCard onClick={goToDetails}>
+      <CardTitle>{place}</CardTitle>
+      <StarRow rating={rating} />
+      <div className="author-date">
+        <CardAuthor>{author}</CardAuthor>
+        <CardDate>{formatDateTime(publishedAt)}</CardDate>
+      </div>
+    </StyledReviewCard>
+  );
+};
+
+const StyledReviewCard = styled(StyledCard)`
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    box-shadow: ${props => props.theme.darkBoxShadow};
+  }
+`;
+
+ReviewCard.propTypes = propTypes;
 
 export default ReviewCard;

@@ -2,6 +2,14 @@ import { Link } from '@reach/router';
 import React from 'react';
 import styled from 'styled-components';
 
+const Nav = () => {
+  return (
+    <NavStyles>
+      <Link to="/">Home</Link>
+    </NavStyles>
+  );
+};
+
 const NavStyles = styled.ul`
   margin: 0;
   padding: 0;
@@ -37,9 +45,6 @@ const NavStyles = styled.ul`
       &:after {
         width: calc(100% - 60px);
       }
-      @media (max-width: 700px) {
-        width: calc(100% - 10px);
-      }
     }
   }
   @media (max-width: 1300px) {
@@ -49,13 +54,5 @@ const NavStyles = styled.ul`
     font-size: 1.5rem;
   }
 `;
-
-function Nav(props) {
-  return (
-    <NavStyles>
-      <Link to="/">Home</Link>
-    </NavStyles>
-  );
-}
 
 export default Nav;

@@ -6,7 +6,7 @@ import NotFound from './pages/NotFound';
 import ReviewDetailsPage from './pages/ReviewDetailsPage';
 import ReviewsPage from './pages/ReviewsPage';
 
-function App() {
+const App = () => {
   return (
     <Page>
       <Router>
@@ -16,6 +16,6 @@ function App() {
       </Router>
     </Page>
   );
-}
+};
 
 ReactDOM.render(<App />, document.getElementById('root'));

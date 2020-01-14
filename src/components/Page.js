@@ -4,6 +4,18 @@ import metropolisBold from '../assets/fonts/Metropolis-Bold.woff';
 import metropolis from '../assets/fonts/Metropolis-Regular.woff';
 import Header from './Header';
 
+const Page = props => {
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <StyledPage>
+        <Header />
+        <Inner>{props.children}</Inner>
+      </StyledPage>
+    </ThemeProvider>
+  );
+};
+
 const theme = {
   black: '#393939',
   grey: '#9D9D9D',
@@ -14,17 +26,6 @@ const theme = {
   boxShadow: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
   darkBoxShadow: '0 12px 24px 0 rgba(0, 0, 0, 0.2)',
 };
-
-const StyledPage = styled.div`
-  background: white;
-  color: ${props => props.theme.black};
-`;
-
-const Inner = styled.div`
-  max-width: ${props => props.theme.maxWidth};
-  margin: 0 auto;
-  padding: 2rem;
-`;
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -59,16 +60,15 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-function Page(props) {
-  return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <StyledPage>
-        <Header />
-        <Inner>{props.children}</Inner>
-      </StyledPage>
-    </ThemeProvider>
-  );
-}
+const StyledPage = styled.div`
+  background: white;
+  color: ${props => props.theme.black};
+`;
+
+const Inner = styled.div`
+  max-width: ${props => props.theme.maxWidth};
+  margin: 0 auto;
+  padding: 2rem;
+`;
 
 export default Page;

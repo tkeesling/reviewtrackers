@@ -4,6 +4,33 @@ import styled from 'styled-components';
 import { Dropdown, DropdownItem, DropdownMenu } from 'styled-dropdown-component';
 import { ReactComponent as Ellipsis } from '../assets/icons/ellipsis.svg';
 
+const propTypes = {
+  setShowEdit: PropTypes.func,
+  deleteComment: PropTypes.func,
+};
+
+const SimpleDropdown = ({ setShowEdit, deleteComment }) => {
+  const [hidden, setHidden] = useState(true);
+  const toggleDropdown = () => setHidden(!hidden);
+  const editComment = () => setShowEdit(true);
+
+  return (
+    <Dropdown>
+      <Button onClick={() => setHidden(!hidden)}>
+        <StyledEllipsis />
+      </Button>
+      <StyledDropdownMenu right hidden={hidden} toggle={toggleDropdown}>
+        <DropdownItem onClick={editComment}>Edit</DropdownItem>
+        <DropdownItem onClick={deleteComment}>Delete</DropdownItem>
+      </StyledDropdownMenu>
+    </Dropdown>
+  );
+};
+
+const StyledDropdownMenu = styled(DropdownMenu)`
+  font-size: 1.5rem;
+`;
+
 const StyledEllipsis = styled(Ellipsis)`
   height: 25px;
   width: 25px;
@@ -27,30 +54,6 @@ const Button = styled.button`
   }
 `;
 
-const CustomDropdownMenu = styled(DropdownMenu)`
-  font-size: 1.5rem;
-`;
-
-function SimpleDropdown(props) {
-  const { setShowEdit, deleteComment } = props;
-  const [hidden, setHidden] = useState(true);
-
-  return (
-    <Dropdown>
-      <Button onClick={() => setHidden(!hidden)}>
-        <StyledEllipsis />
-      </Button>
-      <CustomDropdownMenu right hidden={hidden} toggle={() => setHidden(!hidden)}>
-        <DropdownItem onClick={() => setShowEdit(true)}>Edit</DropdownItem>
-        <DropdownItem onClick={deleteComment}>Delete</DropdownItem>
-      </CustomDropdownMenu>
-    </Dropdown>
-  );
-}
-
-Dropdown.propTypes = {
-  setShowEdit: PropTypes.func,
-  deleteComment: PropTypes.func,
-};
+Dropdown.propTypes = propTypes;
 
 export default SimpleDropdown;
